@@ -15,7 +15,7 @@ autoDub.newSong = function(){
 autoDub.newChat = function(data){
 	try{
 		var splitMsg = data.message.split(' ');
-		var msg = data.username + ":";
+		var msg = data.user + ":";
 		var len = splitMsg.length;
 		for(var i = 0 ; i <  len; i++)
 		{
