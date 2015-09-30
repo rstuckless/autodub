@@ -15,13 +15,15 @@ autoDub.newSong = function(){
 autoDub.newChat = function(data){
 	try{
 		var splitMsg = data.message.split(' ');
-		var msg = '';
-		for(String word : splitMsg){
-			if ((word.slice(-4) == '.png') || (word.slice(-4) == '.jpg') || (word.slice(-4) == '.gif') || (word.slice(-5) == '.jpeg')){
-				word = "<a class=\"autolink\" target=\"_blank\" href=\""+word+"\">"+word+"</a>";
+		var msg = data.username + ":";
+		var len = splitMsg.length;
+		for(var i = 0 ; i <  len; i++)
+		{
+			if ((splitMsg[i].slice(-4) == '.png') || (splitMsg[i].slice(-4) == '.jpg') || (splitMsg[i].slice(-4) == '.gif') || (splitMsg[i].slice(-5) == '.jpeg')){
+				splitMsg[i] = "<a class=\"autolink\" target=\"_blank\" href=\""+splitMsg[i]+"\">"+splitMsg[i]+"</a>";
 			}
-			msg += word + " " ;
-		};
+			msg += splitMsg[i] + " " ;
+		}
  		if (autoDub.blockInlineImages) $(".chat-main").find("p:last").html(msg);
 	} catch (e){
 
