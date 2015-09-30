@@ -19,8 +19,14 @@ autoDub.newChat = function(data){
 		var len = splitMsg.length;
 		for(var i = 0 ; i <  len; i++)
 		{
-			if ((splitMsg[i].indexOf('.png') > -1) || (splitMsg[i].indexOf('.jpg') > -1) || (splitMsg[i].indexOf('.gif') > -1) || (splitMsg[i].indexOf('.jpeg') > -1){
-				splitMsg[i] = "<a class=\"autolink\" target=\"_blank\" href=\""+splitMsg[i]+"\">"+splitMsg[i]+"</a>";
+			if (	splitMsg[i].indexOf('/assets/emoji/images/') == -1 &&
+
+
+				(splitMsg[i].indexOf('.png') > -1) || (splitMsg[i].indexOf('.jpg') > -1) || (splitMsg[i].indexOf('.gif') > -1) || (splitMsg[i].indexOf('.jpeg') > -1)
+
+				)
+			{
+				splitMsg[i] = "<a class=\"autolink\" target=\"_blank\" href=\""+splitMsg[i]+"\">"+splitMsg[i]+"</a>";	
 			}
 			msg += splitMsg[i] + " " ;
 		}
@@ -44,7 +50,7 @@ autoDub.storage = {
  		if (!favorite) {
  			var onOff = "ON";
 			if (autoDub.blockInLineImages) onOff = "OFF";
-			$("#main-menu-left").append("<a href=\"#\" onclick=\"autoDub.toggleInline()\" class=\"autodub-link\">[ADub] Chat Images: "+onOff+"</a>");
+			$("#main-menu-left").append("<a href=\"#\" onclick=\"autoDub.toggleInline()\" class=\"autodub-link\">(BETA AS F) [ADub] Chat Images: "+onOff+"</a>");
 			autoDub.storage.save();
     		return;
  		}
@@ -52,7 +58,7 @@ autoDub.storage = {
  		$.extend(autoDub, preferences);
  		var onOff = "ON";
 		if (preferences.blockInlineImages) onOff = "OFF";
-		$("#main-menu-left").append("<a href=\"#\" onclick=\"autoDub.toggleInline()\" class=\"autodub-link\">[ADub] Chat Images: "+onOff+"</a>");
+		$("#main-menu-left").append("<a href=\"#\" onclick=\"autoDub.toggleInline()\" class=\"autodub-link\">(BETA AS F)[ADub] Chat Images: "+onOff+"</a>");
 	}
 };
 
